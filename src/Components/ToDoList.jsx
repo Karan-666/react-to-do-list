@@ -106,10 +106,13 @@ function ToDoList() {
   }
 
   return (
-    <div className="flex flex-col items-center bg-gray-900  min-h-screen ">
+    // main container of app
+    <div className="flex flex-col items-center bg-black  min-h-screen ">
+      {/* // calling header component here */}
       <Header />
-      <div className="w-full max-w-lg p-6 bg-teal-500 rounded-lg shadow-2xl">
-        <h3 className="text-xl font-semibold text-white mb-4"> Add a new task: </h3>
+      {/* A card like container for modern look */}
+      <div className="w-full max-w-lg p-6 bg-yellow-100 rounded-lg shadow-2xl">
+        <h3 className="text-xl font-bold text-gray-800 mb-4"> Add a new task: </h3>
         <div className=" flex gap-4 mb-4">
           <input
             type="text"
@@ -118,17 +121,17 @@ function ToDoList() {
             // setNewTask is setter function of newTask state
             // above 2 lines make sure the UI and state are always in sync
             placeholder="Enter a new task..."
-            className="flex-1 p-2 border border-gray-700 rounded-md bg-gray-800 text-white
+            className="flex-1 p-2 border border-gray-700 rounded-md bg-gray-950 text-white
                        focus:outline-none focus:ring-2 focus:ring-teal-400"
           />
-          <button onClick={addTask} className="bg-teal-400 text-gray-900 py-2 px-4 rounded-md font-semibold
+          <button onClick={addTask} className="bg-sky-500 font-bold text-white border-blue-500 py-2 px-4 rounded-md
                        hover:bg-teal-300 transition duration-300">Add Task</button>
         </div>
         <hr className="border-gray-600 my-4" /> {/* horizontal line */}
         {allTask.length === 0 ? (
-          <p className="text-center text-gray-300 italic" >Please add some task....</p>
+          <p className="text-center text-gray-800 italic" >Please add some task....</p>
         ) : (
-          <ul>
+          <ul className="flex flex-col gap-2">
             {allTask.map((item) => {
               return (
                 <ToDoItem
