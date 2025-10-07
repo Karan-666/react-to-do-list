@@ -112,7 +112,10 @@ function ToDoList() {
       <Header />
       {/* A card like container for modern look */}
       <div className="w-full max-w-lg p-6 bg-yellow-100 rounded-lg shadow-2xl">
-        <h3 className="text-xl font-bold text-gray-800 mb-4"> Add a new task: </h3>
+        <h3 className="text-xl font-bold text-gray-800 mb-4">
+          {" "}
+          Add a new task:{" "}
+        </h3>
         <div className=" flex gap-4 mb-4">
           <input
             type="text"
@@ -124,16 +127,25 @@ function ToDoList() {
             className="flex-1 p-2 border border-gray-700 rounded-md bg-gray-950 text-white
                        focus:outline-none focus:ring-2 focus:ring-teal-400"
           />
-          <button onClick={addTask} className="bg-sky-500 font-bold text-white border-blue-500 py-2 px-4 rounded-md
-                       hover:bg-teal-300 transition duration-300">Add Task</button>
+          <button
+            onClick={addTask}
+            className="bg-sky-500 font-bold text-white border-blue-500 py-2 px-4 rounded-md
+                       hover:bg-teal-300 transition duration-300"
+          >
+            Add Task
+          </button>
         </div>
         <hr className="border-gray-600 my-4" /> {/* horizontal line */}
         {allTask.length === 0 ? (
-          <p className="text-center text-gray-800 italic" >Please add some task....</p>
+          <p className="text-center text-gray-800 italic">
+            Please add some task....
+          </p>
         ) : (
           <ul className="flex flex-col gap-2">
             {allTask.map((item) => {
               return (
+                // created unordered list, now todoitem component will give list item <li>
+
                 <ToDoItem
                   key={item.id}
                   task={item}

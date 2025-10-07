@@ -18,6 +18,7 @@ function ToDoItem({ task, toggleTask, deleteTask, editTask }) {
 
   return (
     // we are taking li here as in the ToDoList component we are taking <ul> , and each item will be <li>
+    // We are checking if we have to display span text to show task or text input for editing mode
       <li className="flex justify-between items-center py-2 px-4 bg-gray-800 rounded-md hover:bg-gray-700 transition duration-200">
         {isEditing === true ? (
           <input 
@@ -27,10 +28,12 @@ function ToDoItem({ task, toggleTask, deleteTask, editTask }) {
           className="flex-1 p-1 border border-gray-600 rounded-md bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-teal-400"
           />
         ) : (
+          // here is logic of showing completed task, it will strike-out the text if status is complete
           <span className={`flex-1 text-white cursor-pointer ${task.isComplete ? "line-through text-gray-500" : ""}`} onClick={()=>toggleTask(task.id)}>
             {task.name}
           </span>
         )}
+        {/* Keeping both edit and delete button in flex container */}
         <div className="flex gap-2 ml-4">
         <button onClick={handleOnClickEditButton} className="bg-teal-500 text-white text-sm py-1 px-2 rounded-md hover:bg-teal-400 transition duration-300"> 
           {isEditing === true ? "Save" : "Edit"}</button>
