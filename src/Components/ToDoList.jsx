@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ToDoItem from "./ToDoItem";
+import Header from "./Header";
 
 function ToDoList() {
   // creating empty array to store all tasks
@@ -14,7 +15,8 @@ function ToDoList() {
 
   function addTask() {
     // if user try to add empty task, gives alert
-    if (newTask === "") {
+    // used trim() to prevent adding only spaces
+    if (newTask.trim() === "") {
       alert("please add a task first");
       return;
     }
@@ -35,7 +37,7 @@ function ToDoList() {
     // updating orignal array
     setAllTask(tempAllTasks);
 
-    console.log(allTask);
+    // console.log({...allTask});
 
     // making input box blank again
     setNewTask("");
@@ -87,7 +89,6 @@ function ToDoList() {
   /////////// Edit task function /////////////////////////
 
   function editTask(id, newText) {
-
     // No need to create a copy here, map returns a new array
 
     const tempArray = allTask.map((item) => {
@@ -105,35 +106,43 @@ function ToDoList() {
   }
 
   return (
-    <div>
-      <h3> Add a new task: </h3>
-      <input
-        type="text"
-        value={newTask} // sets initial value of input value to current state value
-        onChange={(event) => setNewTask(event.target.value)} // event.target.value holds the type value
-        // setNewTask is setter function of newTask state
-        // above 2 lines make sure the UI and state are always in sync
-        placeholder="Enter a new task..."
-      />
-      <button onClick={addTask}>Add Task</button>
-      <hr /> {/* horizontal line */}
-      {allTask.length === 0 ? (
-        <p>Please add some task....</p>
-      ) : (
-        <ul>
-          {allTask.map((item) => {
-            return (
-              <ToDoItem
-                key={item.id}
-                task={item}
-                toggleTask={toggleTask}
-                deleteTask={deleteTask}
-                editTask={editTask}
-              />
-            );
-          })}
-        </ul>
-      )}
+    <div className="flex flex-col items-center bg-gray-900  min-h-screen ">
+      <Header />
+      <div className="w-full max-w-lg p-6 bg-teal-500 rounded-lg shadow-2xl">
+        <h3 className="text-xl font-semibold text-white mb-4"> Add a new task: </h3>
+        <div className=" flex gap-4 mb-4">
+          <input
+            type="text"
+            value={newTask} // sets initial value of input value to current state value
+            onChange={(event) => setNewTask(event.target.value)} // event.target.value holds the type value
+            // setNewTask is setter function of newTask state
+            // above 2 lines make sure the UI and state are always in sync
+            placeholder="Enter a new task..."
+            className="flex-1 p-2 border border-gray-700 rounded-md bg-gray-800 text-white
+                       focus:outline-none focus:ring-2 focus:ring-teal-400"
+          />
+          <button onClick={addTask} className="bg-teal-400 text-gray-900 py-2 px-4 rounded-md font-semibold
+                       hover:bg-teal-300 transition duration-300">Add Task</button>
+        </div>
+        <hr className="border-gray-600 my-4" /> {/* horizontal line */}
+        {allTask.length === 0 ? (
+          <p className="text-center text-gray-300 italic" >Please add some task....</p>
+        ) : (
+          <ul>
+            {allTask.map((item) => {
+              return (
+                <ToDoItem
+                  key={item.id}
+                  task={item}
+                  toggleTask={toggleTask}
+                  deleteTask={deleteTask}
+                  editTask={editTask}
+                />
+              );
+            })}
+          </ul>
+        )}
+      </div>
     </div>
   );
 }

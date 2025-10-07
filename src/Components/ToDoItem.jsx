@@ -18,20 +18,25 @@ function ToDoItem({ task, toggleTask, deleteTask, editTask }) {
 
   return (
     // we are taking li here as in the ToDoList component we are taking <ul> , and each item will be <li>
-      <li>
+      <li className="flex justify-between items-center py-2 px-4 bg-gray-800 rounded-md hover:bg-gray-700 transition duration-200">
         {isEditing === true ? (
           <input 
           type="text"
           value={editedValue}
           onChange={handleOnChangeInputText}
+          className="flex-1 p-1 border border-gray-700 rounded-md bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-teal-400"
           />
         ) : (
-          <span onClick={()=>toggleTask(task.id)}>
+          <span className={`flex-1 text-white cursor-pointer ${task.isComplete ? "line-through text-gray-500" : ""}`} onClick={()=>toggleTask(task.id)}>
             {task.name}
           </span>
         )}
-        <button onClick={handleOnClickEditButton}>{isEditing === true ? "Save" : "Edit"}</button>
-        <button onClick={()=>deleteTask(task.id)}>Delete</button>
+        <div className="flex gap-2 ml-4">
+        <button onClick={handleOnClickEditButton} className="bg-teal-500 text-white text-xs py-1 px-2 rounded-md hover:bg-teal-400 transition duration-300"> 
+          {isEditing === true ? "Save" : "Edit"}</button>
+        <button onClick={()=>deleteTask(task.id)} className="bg-red-600 text-white text-xs py-1 px-2 rounded-md hover:bg-red-500 transition duration-300">
+          Delete</button>
+        </div>
       </li>
   );
 }
