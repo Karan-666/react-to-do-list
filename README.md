@@ -1,16 +1,22 @@
-# React + Vite
+React To-Do List Application
+A simple and intuitive To-Do List application built with React. 
+This project helps you manage your daily tasks by allowing you to add, edit, mark as complete, and delete items from your list.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Key Features
+Add Tasks: Quickly add new tasks to your list.
 
-Currently, two official plugins are available:
+Edit Tasks: Made a typo? You can easily edit any existing task.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Mark as Complete: Click on a task to mark it as done, with a clear visual indicator.
 
-## React Compiler
+Delete Tasks: Remove completed or unwanted tasks from your list.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Responsive Design: The application is styled with Tailwind CSS and works well on both desktop and mobile devices.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Getting Started
+To run this project on your local machine, follow these simple steps.
+1. Clone the repository
+2. Navigate to the project directory
+3. Install the dependencies using npm install
+4. Run the application using npm run dev
+5. The application should now be running on http://localhost:5173.
